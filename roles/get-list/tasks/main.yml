@@ -1,0 +1,7 @@
+---
+
+- name: Apply replicator config
+  include: "subtasks/get-list.yml"
+  register: put_responses
+  vars:
+    api_endpoint: "https://{{ api_hostname }}:{{ api_port }}"

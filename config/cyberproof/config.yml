@@ -1,0 +1,6 @@
+---
+
+rest_api_password: Splunk#$20
+api_hostname: 20.93.115.65
+rest_api_user: splunkadmin
+api_port: 8089

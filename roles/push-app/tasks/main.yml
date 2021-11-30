@@ -1,0 +1,8 @@
+---
+
+- name: Apply replicator config
+  include: "subtasks/push-app.yml"
+  register: put_responses
+  vars:
+    api_endpoint: "https://{{ api_hostname }}:{{ api_port }}"
+  delegate_to: localhost

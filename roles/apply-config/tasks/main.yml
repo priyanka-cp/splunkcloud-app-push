@@ -1,0 +1,15 @@
+---
+
+- name: Apply replicator config
+  include: "subtasks/apply_config.yml"
+  loop: "{{ connectors }}"
+  register: put_responses
+  vars:
+    api_endpoint: "http://{{ api_hostname }}:{{ replicator_port }}"
+    replicator: "{{ replicators | selectattr('name', 'eq', replicator_cluster) | list | first}}"
+    connectors: "{{ replicator.connectors if connector_name == '_all_' else replicator.connectors | selectattr('name', 'eq', connector_name) | list }}"
+
+- name: Display responses
+  debug:
+    var: put_responses
+    verbosity: 1

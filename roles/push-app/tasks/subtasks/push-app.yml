@@ -1,0 +1,32 @@
+---
+
+- name: Ensures /tmp/splunkapp exists on security manager
+  file: path=/tmp/splunkapp state=directory
+
+- name: copy app
+  copy:
+    src="~/Downloads/splunk-add-on-for-microsoft-windows_820.tgz"
+    dest="/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz"
+  delegate_to: localhost
+
+- name: get list configuration
+  uri:
+    url: "{{ api_endpoint }}/services/apps/local"
+    method: POST
+    url_username: "{{ rest_api_user }}"
+    url_password: "{{ rest_api_password }}"
+    body:
+      file1:
+        filename: ~/Downloads/splunk-add-on-for-microsoft-windows_820.tgz
+        mime_type: application/octet-stream
+      text_form_field: value
+    force_basic_auth: true
+    validate_certs: no
+    body_format: form-multipart
+  register: post_responses
+  delegate_to: localhost
+    
+- name: Display responses
+  debug:
+    var: post_responses
+  delegate_to: localhost

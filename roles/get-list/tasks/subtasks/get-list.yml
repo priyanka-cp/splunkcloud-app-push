@@ -1,0 +1,20 @@
+---
+
+- name: get list configuration
+  uri:
+    url: "{{ api_endpoint }}/services/cluster/config"
+    method: GET
+    url_username: "{{ rest_api_user }}"
+    url_password: "{{ rest_api_password }}"
+    force_basic_auth: true
+    validate_certs: no
+    return_content: yes
+    status_code:
+      - 200
+      - 201
+  register: get_responses
+    
+
+- name: Display responses
+  debug:
+    var: get_responses

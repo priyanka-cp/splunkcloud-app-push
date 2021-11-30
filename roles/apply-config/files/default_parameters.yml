@@ -1,0 +1,32 @@
+---
+
+connector.class: "io.confluent.connect.replicator.ReplicatorSourceConnector"
+tasks.max: 1
+dest.kafka.send.buffer.bytes: 131072
+dest.kafka.receive.buffer.bytes: 65536
+dest.kafka.replication.factor: 3
+dest.kafka.ssl.keystore.location: "/etc/kafka/secrets/kafka.server.keystore.jks"
+dest.kafka.ssl.truststore.location: "/etc/kafka/secrets/kafka.server.truststore.jks"
+dest.kafka.security.protocol: "SSL"
+src.kafka.security.protocol: "SSL"
+src.consumer.fetch.min.bytes: 1
+src.consumer.fetch.max.bytes: 52428800
+src.consumer.max.partition.fetch.bytes: 1048576
+src.consumer.max.poll.interval.ms: 300000
+src.consumer.max.poll.records: 500
+src.consumer.check.crcs: true
+src.kafka.send.buffer.bytes: 131072
+src.kafka.receive.buffer.bytes: 65536
+topic.rename.format: ${topic}
+topic.auto.create: false
+topic.create.backoff.ms: 120000
+topic.config.sync: true
+topic.config.sync.interval.ms: 120000
+topic.preserve.partitions: true
+topic.poll.interval.ms: 120000
+topic.blacklist: ""
+offset.topic.commit: true
+value.converter: "io.confluent.connect.replicator.util.ByteArrayConverter"
+key.converter: "io.confluent.connect.replicator.util.ByteArrayConverter"
+header.converter: "io.confluent.connect.replicator.util.ByteArrayConverter"
+provenance.header.enable: false

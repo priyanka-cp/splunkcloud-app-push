@@ -1,0 +1,28 @@
+---
+
+- name: Fetch API configuration
+  hosts: localhost
+  tasks:
+    - include_vars:
+        dir: "{{ playbook_dir }}/config/cyberproof"
+      delegate_facts: true
+  tags:
+    - always
+
+- name: Get list
+  hosts: localhost
+  roles:
+    - role: get-list
+  vars:
+    api_hostname: localhost
+  tags:
+    - get-list
+
+- name: push app
+  hosts: localhost
+  roles:
+    - role: push-app
+  vars:
+    api_hostname: localhost
+  tags:
+    - push-app
