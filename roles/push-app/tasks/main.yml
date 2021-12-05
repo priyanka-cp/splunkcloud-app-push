@@ -4,4 +4,4 @@
   include: "subtasks/push-app.yml"
   register: put_responses
   vars:
-    api_endpoint: "https://{{ 20.93.115.65 }}:{{ 8089 }}"
+    api_endpoint: "https://20.93.115.65:8089"
