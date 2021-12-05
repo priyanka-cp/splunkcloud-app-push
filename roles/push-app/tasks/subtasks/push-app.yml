@@ -13,7 +13,7 @@
     url: "{{ api_endpoint }}/services/apps/local"
     method: POST
     url_username: "{{ rest_api_user }}"
-    url_password: "{{ rest_api_password }}"
+    url_password: splunk$#20
     body:
       file1:
         filename: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
