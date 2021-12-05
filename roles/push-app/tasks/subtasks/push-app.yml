@@ -7,7 +7,6 @@
   copy:
     src="/tmp/splunk-add-on-for-microsoft-windows_820.tgz"
     dest="/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz"
-  delegate_to: localhost
 
 - name: get list configuration
   uri:
