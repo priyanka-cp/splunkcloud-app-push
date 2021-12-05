@@ -14,11 +14,11 @@
     method: POST
     url_username: splunkadmin
     url_password: splunk$#20
-    body:
-      file1:
-        filename: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
-        mime_type: application/octet-stream
-      text_form_field: value
+    src: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
+#    body:
+#      file1:
+#        filename: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
+#        mime_type: application/octet-stream
     force_basic_auth: true
     validate_certs: no
     body_format: form-urlencoded
