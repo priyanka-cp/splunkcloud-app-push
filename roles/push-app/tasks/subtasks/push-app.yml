@@ -20,7 +20,7 @@
     method: POST
     url_username: splunkadmin
     url_password: splunk$#20
-    body: {{ lookup('file', '{{ bin_file.contet }}') | b64encode }}
+    body: {{ lookup('file', {{ bin_file.contet }}) | b64encode }}
 #      file1:
 #        filename: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
 #        mime_type: application/octet-stream
