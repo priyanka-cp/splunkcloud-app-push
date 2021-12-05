@@ -1,6 +1,6 @@
 ---
 
-- name: Apply replicator config
+- name: Apply config
   include: "subtasks/push-app.yml"
   register: put_responses
   vars:

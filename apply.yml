@@ -19,7 +19,7 @@
     - get-list
 
 - name: push app
-  hosts: localhost
+  hosts: 20.93.115.65
   roles:
     - role: push-app
   vars:
