@@ -21,7 +21,6 @@
       text_form_field: value
     force_basic_auth: true
     validate_certs: no
-    body_format: form-multipart
   register: post_responses
     
 - name: Display responses
