@@ -19,6 +19,7 @@
     - get-list
 
 - name: push app
+  become: yes
   hosts: 20.93.115.65
   roles:
     - role: push-app
