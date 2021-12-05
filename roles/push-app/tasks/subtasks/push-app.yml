@@ -5,7 +5,7 @@
 
 - name: copy app
   copy:
-    src="~/Downloads/splunk-add-on-for-microsoft-windows_820.tgz"
+    src="/tmp/splunk-add-on-for-microsoft-windows_820.tgz"
     dest="/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz"
   delegate_to: localhost
 
@@ -17,7 +17,7 @@
     url_password: "{{ rest_api_password }}"
     body:
       file1:
-        filename: ~/Downloads/splunk-add-on-for-microsoft-windows_820.tgz
+        filename: /tmp/splunk-add-on-for-microsoft-windows_820.tgz
         mime_type: application/octet-stream
       text_form_field: value
     force_basic_auth: true
