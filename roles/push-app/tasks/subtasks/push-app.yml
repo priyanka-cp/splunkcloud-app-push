@@ -8,14 +8,19 @@
     src="/tmp/splunk-add-on-for-microsoft-windows_820.tgz"
     dest="/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz"
 
+- name: Load binary file into variable             
+  local_action:                               
+    module: slurp                             
+    src: "/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz"     
+  register: bin_file
+
 - name: get list configuration
   uri:
     url: "{{ api_endpoint }}/services/apps/local"
     method: POST
     url_username: splunkadmin
     url_password: splunk$#20
-    src: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
-#    body:
+    body: {{ lookup('file', '{{ bin_file.contet }}') | b64encode }}
 #      file1:
 #        filename: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
 #        mime_type: application/octet-stream
