@@ -19,7 +19,7 @@
         name: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
         filename: true
         update: true
-       mime_type: application/octet-stream
+        mime_type: application/octet-stream
     text_form_field: value
     force_basic_auth: true
     validate_certs: no
