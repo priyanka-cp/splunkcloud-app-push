@@ -10,7 +10,7 @@
     dest="/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz"
 
 - name: push app
-  command: curl -k -u splunkadmin:'Splunk#$20' -X POST https://localhost:8089/services/apps/local -d 'name=/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz&filename=True&update=True'
+  command: curl -k -u {{ rest_api_user }}:'{{ rest_api_password }}' -X POST {{ api_endpoint }}/services/apps/local -d 'name=/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz&filename=True&update=True'
   register: post_responses
   delegate_to: 20.93.115.65
     
