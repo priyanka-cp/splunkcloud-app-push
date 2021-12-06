@@ -2,31 +2,19 @@
 
 - name: Ensures /tmp/splunkapp exists 
   file: path=/tmp/splunkapp state=directory
+  delegate_to: 20.93.115.65
 
-- name: copy app
+- name: copy app to splunk server
   copy:
     src="/tmp/splunk-add-on-for-microsoft-windows_820.tgz"
     dest="/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz"
 
-- name: push app configuration
-  command: curl -k -u splunkadmin:'Splunk#$20' -X POST  https://localhost:8089/services/apps/local -d 'name=/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz&filename=True&update=True'
-#  uri:
-#    url: "{{ api_endpoint }}/services/apps/local"
-#    method: POST
-#    url_username: admin
-#    url_password: admin1234
-#    body:
-#      file1:
-#        name: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
-#        filename: true
-#        update: true
-#        mime_type: application/octet-stream
-#      text_form_field: value
-#    force_basic_auth: true
-#    validate_certs: no
-#    body_format: form-urlencoded
+- name: push app
+  command: curl -k -u splunkadmin:'Splunk#$20' -X POST https://localhost:8089/services/apps/local -d 'name=/tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz&filename=True&update=True'
   register: post_responses
+  delegate_to: 20.93.115.65
     
 - name: Display responses
   debug:
     var: post_responses
+  
