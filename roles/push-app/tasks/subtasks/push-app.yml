@@ -16,13 +16,13 @@
     url_password: admin1234
     body:
       file1:
-        name: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
-        filename: true
+        filename: /tmp/splunkapp/splunk-add-on-for-microsoft-windows_820.tgz
+#        filename: true
         update: true
 #        mime_type: application/octet-stream
     force_basic_auth: true
     validate_certs: no
-    body_format: form-multipart
+    body_format: form-urlencoded
   register: post_responses
     
 - name: Display responses
